@@ -1,17 +1,26 @@
 package com.latch.automation;
 
-import org.openqa.selenium.By;
+import com.latch.automation.annotations.FrameworkAnnotation;
+import com.latch.automation.pages.GetStartedPage;
+import com.latch.automation.pages.PhoneNumberPage;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static com.latch.automation.driver.DriverManager.getDriver;
 
 public class Tests extends BaseTest {
 
-    @Test
-    public void firstTest() throws InterruptedException {
-        Thread.sleep(10000);
-        getDriver().findElement(By.xpath("//android.widget.Button[@resource-id=\"com.hdw.james.rider:id/getStartedButton\"]")).click();
-        Thread.sleep(10000);
+    GetStartedPage getStartedPage;
+    PhoneNumberPage phoneNumberPage;
 
+    @BeforeMethod
+    public void setup() {
+        getStartedPage = new GetStartedPage();
+    }
+
+    @FrameworkAnnotation(author = "fogrizovic")
+    @Test(description = "Should click Get Started button")
+    public void shouldClickGetStarted() throws InterruptedException {
+        Thread.sleep(10000);
+        phoneNumberPage = getStartedPage.clickGetStarted();
+        Thread.sleep(10000);
     }
 }
