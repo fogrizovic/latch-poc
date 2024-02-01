@@ -13,10 +13,12 @@ public class LocalDriver implements IDriver {
     public WebDriver getDriver() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("myDevice");
-        //options.setUdid("pixel6_1");
         options.setPlatformName("Android");
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
         options.setApp(System.getProperty("user.dir") + "/src/test/resources/JamesRider_1.22.0.apk");
+        options.setAutoGrantPermissions(true);
+        options.setAppWaitActivity("com.hdw.james.rider.viewlayer.login.LoginActivity");
+
         //options.setAppPackage("com.hdw.james.rider");
         //options.setAppActivity("com.hdw.james.rider.viewlayer.login.LoginActivity");
 
