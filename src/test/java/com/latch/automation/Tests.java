@@ -19,11 +19,16 @@ public class Tests extends BaseTest {
 
     @FrameworkAnnotation(author = "fogrizovic")
     @Test(description = "Should click Get Started button")
-    public void shouldClickGetStarted() throws InterruptedException {
-        Thread.sleep(10000);
+    public void shouldClickGetStarted() {
         phoneNumberPage = getStartedPage.clickGetStarted();
-        Thread.sleep(10000);
+        phoneNumberPage
+                .enterPhoneNumber("12333333")
+                .clickContinue();
 
-        Assertions.assertThat(phoneNumberPage.isPhoneInputDisplayed()).isTrue();
+        String errorMsg = phoneNumberPage.getErrorMsg();
+
+        Assertions.assertThat(errorMsg)
+                .contains("Something went wrong, please try again");
+
     }
 }
