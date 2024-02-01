@@ -5,7 +5,7 @@
         <classes>
             <class name="com.latch.automation.Tests">
                 <methods>
-                    <include name="firstTest"/>
+                    <include name="shouldClickGetStarted"/>
                 </methods>
             </class>
 
